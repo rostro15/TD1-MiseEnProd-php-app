@@ -1,0 +1,12 @@
+
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+  php:
+    build: .
+    ports:
+      - "9000:80"
+    depends_on:
+      - rabbitmq
