@@ -4,9 +4,22 @@ version: '3'
 services:
   rabbitmq:
     image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 5s
+      timeout: 10s
+      retries: 5
   php:
     build: .
     ports:
       - "9000:80"
     depends_on:
       - rabbitmq
+  server:
+    build: .
+    entrypoint: php /var/www/html/server.php
+    depends_on:
+      rabbitmq:
+          condition: service_healthy
