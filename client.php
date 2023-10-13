@@ -1,5 +1,8 @@
 <?php
 
+//hide deprecated errors
+error_reporting(0);
+
 include ('vendor/autoload.php');
 
 use PhpAmqpLib\Connection\AMQPStreamConnection;
