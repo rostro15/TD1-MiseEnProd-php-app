@@ -3,6 +3,7 @@
 ## Requirements To Run Test
 
 1. docker
+2. docker compose plugin
 
 
 ## Video Processing and RabbitMQ
